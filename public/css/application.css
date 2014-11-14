@@ -1,0 +1,740 @@
+/* Soundcloud Orange: #FE7B13*/
+
+div.vote-container {
+  height: 3em;
+}
+
+a.upvote-button {
+  position: absolute;
+  right: -4px;
+  bottom: 4em;
+  z-index: 97;
+}
+
+a.downvote-button {
+  position: absolute;
+  right: -4px;
+  bottom: 2em;
+  z-index: 97;
+}
+
+body {
+  width: 100%;
+  background: #030507;
+}
+
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #999;
+  text-decoration: none;
+}
+
+form#upload {
+  position: relative;
+  display: block;
+  top: 0;
+  padding: 10px;
+  background: #666;
+  z-index: 2;
+}
+
+p.error {
+  text-align: center;
+  font-size: 0.65em;
+  color: red;
+}
+
+label {
+  font-size: 10px;
+  color: #FE7B13;
+}
+
+form#playlist-selection {
+  width: 100%;
+}
+
+input.playlist-input {
+  visibility: hidden;
+}
+
+div.playlist-container-selection {
+  position: relative;
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  width: 30%;
+  border: 1px solid #bcbcbc;
+  background: #fff;
+}
+
+div.playlist-container-selection:hover {
+  box-shadow: 0 0 3px 3px #8dcbff;
+}
+
+div#new-playlist-container {
+  position: absolute;
+  top: 35%;
+  right: 15%;
+  text-align: right;
+}
+
+input.upload {
+  border-radius: 5px;
+  color: #666;
+}
+
+input.file-input {
+  display: inline;
+  width: 6.5%;
+}
+
+input#upload-submit {
+  position: absolute;
+  display: inline-block;
+  background: #bcbcbc;
+  border-radius: 5px;
+  color: #666;
+}
+
+div.track-container {
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 20%;
+  border: 1px solid #bcbcbc;
+  background: #fff;
+}
+
+
+img#artwork {
+  margin: 10px;
+  border: 1px solid #bcbcbc;
+}
+
+h1.artist {
+  text-align: left;
+  font-size: 125%;
+  line-height: 1;
+  padding-left: 5px;
+  color: #FE7B13;
+}
+
+h2.song-title {
+  text-align: left;
+  font-size: 150%;
+  line-height: 1;
+  padding-left: 10px;
+  color: #999;
+}
+
+h1.points {
+  text-align: right;
+  line-height: 0;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+div.user-track-options {
+  position: relative;
+  margin: 5px 0 10px 5px;
+  height: 25px;
+}
+
+a.add-track {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/add.png')
+}
+
+a.download-track {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/download.png')
+}
+
+a.share-track {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/share.png');
+  cursor: pointer;
+}
+
+a.delete-track {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/trash.png');
+  cursor: pointer;
+}
+
+a.delete-playlist {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/trash.png');
+  cursor: pointer;
+}
+
+a.add-playlist {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/add.png')
+}
+
+a.play-track {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/play-button.png')
+}
+
+div.default-track-options {
+  position: relative;
+  margin: 5px 0 10px 5px;
+  height: 25px;
+}
+
+a.default-play-track {
+  position: relative;
+  top: 3px;
+  color: #fff;
+  z-index: 99;
+}
+
+a.default-play-playlist {
+  position: relative;
+  top: 3px;
+  color: #fff;
+  z-index: 99;
+}
+
+div.playlist-container {
+  position: relative;
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  width: 15%;
+  border: 1px solid #bcbcbc;
+  background: #fff;
+}
+
+h1.playlist-title {
+  text-align: left;
+  font-size: 125%;
+  line-height: 1;
+  padding-left: 5px;
+  color: #FE7B13;
+}
+
+h2.playlist-description {
+  text-align: left;
+  font-size: 100%;
+  line-height: 1;
+  padding-left: 10px;
+  color: #999;
+}
+
+h1.playlist-points {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+div#video-player {
+  position: relative;
+  height: 2em;
+  width: 45%;
+  top: 5px;
+  left: 25%;
+  border-radius: 5px; 
+  background: -webkit-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -moz-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -o-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -ms-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%); 
+  z-index: 98;
+}
+
+video#video {
+  position: relative;
+  width: 0%;
+  padding: 5px 0 5px 5px;
+  margin: 15px;
+  display: block;
+  z-index: 1;
+}
+
+button:focus {
+  outline-style: none;
+}
+
+button.play {
+  position: relative;
+  float: left;
+  height: 22px;
+  width: 22px;
+  margin: 5px 0 0 10px;
+  border: none;
+  background: transparent; 
+  background-image: url('../images/play-button.png');
+}
+
+button.pause {
+  position: relative;
+  float: left;
+  height: 22px;
+  width: 22px;
+  margin: 5px 0 0 10px;
+  border: none;
+  background: transparent; 
+  background-image: url('../images/pause-button.png'); 
+}
+
+button#shuffle-button {
+  position: relative;
+  float: left;
+  height: 30px;
+  width: 30px;
+  margin: 0 0 0 10px;
+  top: 0;
+  border: none;
+  background: transparent;
+  background-image: url('../images/shuffle.png');
+  z-index: 98; 
+}
+
+button#playlist-button {
+  position: relative;
+  float: left;
+  height: 22px;
+  width: 22px;
+  margin: 5px 0 0 10px;
+  top: 0;
+  border: none;
+  background: transparent;
+  background-image: url('../images/playlist.png');
+  z-index: 98; 
+}
+
+button#fullscreen-button {
+  position: relative;
+  float: left;
+  height: 30px;
+  width: 30px;
+  margin: 2px 0 0 5px;
+  top: 0;
+  border: none;
+  background: transparent;
+  background-image: url('../images/fullscreen.png');
+  z-index: 98; 
+}
+
+p.play {
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #bcbcbc;
+  line-height: 0px;
+  z-index: 98;
+}
+
+span.play {
+  font-size: 24px;
+  color: #FE7B13;
+}
+
+div#timeline {
+  position: relative;
+  width: 59%;
+  height: 15px;
+  float: left;
+  top: 10px;
+  border-radius: 15px;
+  background: #666;
+  z-index: 98;
+}
+
+div#playhead {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-top: -1px;
+  background: #FE7B13;
+  z-index: 98;
+}
+
+div#volume-box {
+  position: absolute;
+  width: 75px;
+  height: 100%;
+  top: -2px;
+  right: -20px;
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: 98;
+}
+
+div.volume {
+  float: right;
+  display: inline-block;
+  margin: 1px;
+  width: 3px;
+  background: #bcbcbc;
+  border-radius: 35%;
+}
+
+div#one {
+  height: 20px;
+  background: #FE7B13;
+}
+
+div#two {
+  height: 15px;
+  background: #FE7B13;
+}
+
+div#three {
+  height: 25px;
+  background: #FE7B13;
+}
+
+div#four {
+  height: 20px;
+  background: #FE7B13;
+}
+
+div#five {
+  height: 20px;
+}
+
+div#six {
+  height: 25px;
+}
+
+div#seven {
+  height: 15px;
+}
+
+div#eight {
+  height: 20px;
+  margin-right: 10px;
+}
+
+div#list-of-tracks {
+  position: absolute; 
+  left: 20%; 
+  top: 20%; 
+  width: 18em;
+  background: #fff;
+  z-index: 99;
+}
+
+nav {
+  width: 100%;
+  height: 135px;
+ /* background: #fff;*/
+ /* background: -webkit-linear-gradient(top, #fff 0%, #edecec 31%, #dadada 55%, #c4c3c3 83%, #b5b5b5 100%, #a8a8a8 100%, #919191 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #edecec 31%, #dadada 55%, #c4c3c3 83%, #b5b5b5 100%, #a8a8a8 100%, #919191 100%);
+  background: -o-linear-gradient(top, #fff 0%, #edecec 31%, #dadada 55%, #c4c3c3 83%, #b5b5b5 100%, #a8a8a8 100%, #919191 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #edecec 31%, #dadada 55%, #c4c3c3 83%, #b5b5b5 100%, #a8a8a8 100%, #919191 100%);
+  background: linear-gradient(top, #fff 0%, #edecec 31%, #dadada 55%, #c4c3c3 83%, #b5b5b5 100%, #a8a8a8 100%, #919191 100%); */
+  background: -webkit-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -moz-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -o-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: -ms-linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%);
+  background: linear-gradient(top, #494949 0%, #434242 31%, #393838 55%, #242323 83%, #1b1a1a 100%, #161515 100%, #0b0b0b 100%); 
+  border-bottom: 1px solid #666;
+  /*border-bottom: 1px solid #662331;*/
+}
+
+div#side-bar-nav {
+  position: fixed;
+  top: 35%;
+  right: 0;
+  z-index: 99;
+}
+
+div#side-bar-nav a {
+  display: block;
+  padding: 5px;
+  margin: 2.5px;
+  font-family: Courier;
+  background: #fff;
+  z-index: 99;
+}
+
+div#playlists-container {
+  position: relative;
+  display: block;
+  top: 0.625em;
+  left: 1.875em;
+  width: 95%;
+  min-height: 30em;
+  height: 100%;
+  margin-bottom: 0.625em;
+  border: 1px solid #999;
+  background: #333;
+  overflow-y: scroll;
+  text-align: center;
+  z-index: 0;
+}
+
+div#container {
+  width: 100%;
+/*  background: #16263B;*/
+  background: -webkit-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
+  background: -moz-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
+  background: -o-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
+  background: -ms-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
+  background: linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%); 
+}
+
+div#soundhoog-logo {
+  height: 130px;
+  width: 285px;
+  margin-left: 15px;
+  background-image: url('../images/thehoog-Logo.png');
+}
+
+form#track_search {
+  position: relative;
+  float: right;
+  top: -25px;
+}
+
+input.search-field {
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  background: #333;
+  color: #ff8e2e;
+}
+
+input.sound_button-nav {
+  border: none;
+  width: 125px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #666;
+  border: 1px ridge;
+}
+
+input.sound_login_button {
+  border: none;
+  width: 125px;
+  height: 25px;
+  margin-left: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #666;
+  border: 1px ridge;
+}
+
+input.sound_signup_button {
+  border: none;
+  width: 125px;
+  height: 25px;
+  margin-left: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #666;
+  border: 1px ridge;
+}
+
+div#auth-hog {
+  width: 370px;
+  height: 455px;
+  margin: 3% auto;
+  background-image: url('../images/soundHoog.png');
+  cursor: pointer;
+}
+
+div.row {
+  height: 9em;
+  border-bottom: 1px solid #bcbcbc;
+  background: rgba(82, 35, 35, 0.8);
+}
+
+div.row:hover {
+  background: rgba(82, 35, 35, 1);
+}
+
+div.chart-position {
+  position: relative;
+  float: left;
+  height: 100%;
+  font-size: 8em;
+  background: #494949;
+  color: #fff;
+}
+
+img.album-cover {
+  position: relative;
+  float: left;
+  height: 99%;
+  border: 1px solid #999;
+}
+
+h1.chart-artist-name {
+  margin: 0;
+  padding: 1% 0 0 0;
+  font-size: 3em;
+  line-height: 1;
+  color: #FE7B13;
+}
+
+h2.chart-track-title {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+a#filter-secondary {
+  position: fixed;
+  top: 85%;
+  left: 1.2em;
+  color: #FFD490;
+  z-index: 99;
+}
+
+a#filter-primary {
+  position: fixed;
+  top: 90%;
+  left: 1.2em;
+  color: #ffba4e;
+  z-index: 99;
+}
+
+div.filter {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+div.filter-current {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: left;
+}
+
+h2 {
+  color: #FE7B13;
+}
+
+div.fog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: 98;
+  visibility: hidden;
+}
+
+h1.form-header {
+    position: absolute;
+    margin-left: 320px;
+    margin-top: 180px;
+    font-family: Helvetica;
+    color: #FE7B13;
+    z-index: 99;
+    visibility: hidden;
+}
+
+h5.playlist-user {
+  text-align: center;
+  line-height: 0;
+  color: #999;
+}
+
+h1.footnote {
+  position: fixed;
+  top: 90%;
+  left: 1.2em;
+  color: #999;
+  z-index: 99;
+}
+
+h1.header-inbox-left {
+  text-align: center;
+  line-height: 0;
+  color: #999;
+  z-index: 99;
+}
+
+h1.header-inbox-right {
+  text-align: center;
+  line-height: 0;
+  color: #999;
+  z-index: 99;
+}
+
+span {
+  color: #999;
+}
+
+div.form {
+  position: absolute;
+  margin: 15% 0 0 22%;
+  width: 800px;
+  height: 260px;
+  background: #fff;
+  z-index: 99;
+  visibility: hidden;
+}
+
+form#login {
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  left: 0;
+  padding: 10% 15% 0 10%;
+  border-right: 1px solid #999;
+  text-align: center;
+}
+
+form#signup {
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  right: 0;
+  padding: 10% 10% 0 15%;
+  border-left: 1px solid #999;
+  text-align: center;
+}
+
+input.form-field {
+  margin: 2px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+textarea.text-box {
+  margin: 5px;
+  border-radius: 15px;
+}

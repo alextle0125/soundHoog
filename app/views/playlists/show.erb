@@ -1,0 +1,72 @@
+<div class="track-container" style="top: 25%">
+  <h5 class="playlist-user"><%= User.find(@playlist.user_id).email %></h5>
+  <img id="artwork" style="margin: 0 0.8em" src="<%= @playlist.tracks.first.artwork_url %>" width="90%">
+  <h1 class="artist"><%= @playlist.title %></h1>
+  <h2 class="song-title"><%= @playlist.description %></h2>
+  <h1 class="playlist-points"><%= @playlist.points %></h1>
+  <% if current_user %>
+    <div class="user-track-options">
+      <a class="play-track" href="<%= @playlist.tracks.first.permalink_url %>">play</a>
+      <a class="add-playlist" href="/addplaylist/<%= @playlist.id %>">add</a>
+    </div>
+  <% else %>
+    <div class="default-track-options">
+      <a class="default-play-track" href="<%= @playlist.permalink_url %>">play</a>
+    </div> 
+  <% end %>
+</div>
+
+<% if @video == true %>
+  <div id="video-player" style="position: absolute; height: 55%; top: 25%; left: 10%;">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box" style="top: 5">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+
+    <video id="video" class="off" style="width: 95%" autoplay>
+      <% @playlist.tracks.each do |track| %>
+        <source src="<%= track.permalink_url %>">
+      <% end %>
+    </video>
+  </div>
+<% else %>
+  <div id="video-player" style="position: absolute; top: 25%; left: 10%; height: 2em">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+    <video id="video" class="off" autoplay>
+      <% @playlist.tracks.each do |track| %>
+        <source src="<%= track.permalink_url %>">
+      <% end %>
+    </video>
+  </div>
+<% end %>

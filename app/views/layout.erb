@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title>thehoog(dot)com</title>
+</head>
+<h1 class="form-header"><span style="font-size: 18px; color: #bcbcbc;">the</span><span style="color: #FE7B13;">hoog</span><span style="font-size: 12px; color: #fff;">(dot)com</span></h2>
+<div class="form">
+  <form id="login" name="login-auth" action="/login" method="POST">
+    <input class="form-field" name="email" type="text" placeholder="E-mail">
+    <input class="form-field" name="password" type="password" placeholder="Password">
+    <input class="sound_login_button" type="Submit" value="Log In">
+    <p id="login" class="error"></p>
+  </form>
+  <form id="signup" name="signup-auth" action="/signup" method="POST">
+    <input class="form-field" name="email" type="text" placeholder="E-mail">
+    <input class="form-field" name="password" type="password" placeholder="Password">
+    <input class="sound_signup_button" type="Submit" value="Sign Up">
+    <p id="signup" class="error"></p>
+  </form>
+</div>
+<div class="fog"></div>
+<nav>
+  <div id="side-bar-nav">
+  <% if current_user %>
+    <a class="side-bar-options" href="/users/<%= current_user.id %>">user</a>
+    <a class="side-bar-options" href="/users/<%= current_user.id %>/inbox">inbox</a>
+    <a class="side-bar-options" href="/theswamp">the swamp</a>
+    <a class="side-bar-options" href="/community">community</a>
+    <a class="side-bar-options" href="/thehoog">the Hoog</a>
+    <a class="side-bar-options" href="/logout">logout</a>
+  <% else %>
+    <a class="side-bar-options" href="/theswamp">the swamp</a>
+    <a class="side-bar-options" href="/community">community</a>
+    <a class="side-bar-options" href="/thehoog">the Hoog</a>
+  <% end %> 
+  </div>
+  <% if current_user %>
+    <a href="/users/<%= current_user.id %>"><div id="soundhoog-logo"></div></a>
+  <% else %>
+    <a href="/"><div id="soundhoog-logo"></div></a>
+  <% end %>
+  <form name="search" id="track_search" class="track_search" action="/theswamp" method="GET">
+    <div style="display:none">
+      <input name="utf8" type="hidden" value="✓">
+    </div>
+    <input id="q_title_or_genre_or_artist_cont" name="q[title_or_genre_or_artist_cont]" size="50" class="search-field" type="search" placeholder="Search for an artist">
+    <input name="commit" class="sound_button-nav" type="submit" value="SOUND">
+  </form>
+</nav>
+<body>
+  <div id="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

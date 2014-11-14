@@ -1,0 +1,62 @@
+<% if @video == true %>
+  <div id="video-player" style="height: 55%; left: 0;">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box" style="top: 5">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+
+    <video id="video" class="off" style="width: 95%" autoplay>
+        <source src="<%= @play %>" type="video/mp4">
+        <source src="<%= @play %>" type="video/ogg">
+    </video>
+  </div>
+<% else %>
+  <div id="video-player" style="left: 0;">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+
+    <video id="video" class="off" autoplay>
+      <source src="<%= @play %>" type="audio/mp3">
+      <source src="<%= @play %>" type="audio/wav">
+    </video>
+  </div>
+<% end %>
+
+<div id="new-playlist-container">
+	<form id="new-playlist-form" name="new-playlist-form" action="/playlists/create" method="POST">
+		<input style="width: 465px" type="text" name="title" placeholder="Title" required><br>
+		<textarea rows="15" cols="50" name="description" placeholder="Playlist Description"></textarea></br>
+		<input style='visibility: hidden' type='text' name='track' value="<%= @track.id %>"><br>
+		<input class="sound_button-nav" type="Submit" value="Submit">
+	</form>
+</div>

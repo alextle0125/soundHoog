@@ -1,0 +1,111 @@
+<% if current_user %>
+	<form action="/upload" id="upload" name="upload"  enctype="multipart/form-data" method="POST">
+		<label for="song_title">Song Title:</label>
+		<input class="upload" type="text" name="title" placeholder="Song Title" required>
+		<label for="genre">Genre:</label>
+		<input class="upload" type="text" name="genre" placeholder="Genre" required>
+		<label for="artwork">Artwork:</label>
+		<input type="hidden" name="MAX_FILE_SIZE" value="300" />
+		<input class="upload file-input" type="file" name="artwork" accept="image/*">
+		<label for="audio_video">Audio/Video:</label>
+		<input class="upload file-input" type="file" name="filename" accept="audio/*" required>
+		<input id="upload-submit" type="Submit" value="Submit">
+	</form>
+<% end %>
+<% if @error %>
+	<p class="error"><%= @error %></p>
+<% end %>
+
+<div id="video-player">
+  <p id="draggable" class="play">the<span class="play">hoog</span></p>
+  <div id="timeline">
+    <div id="playhead"></div>
+  </div>
+  <button id="play-button" class="play"></button>
+  <button id="shuffle-button"></button>
+  <button id="playlist-button"></button>
+  <button id="fullscreen-button"></button>
+  <div id="volume-box">
+    <div id="eight" class="volume"></div>
+    <div id="seven" class="volume"></div>
+    <div id="six" class="volume"></div>
+    <div id="five" class="volume"></div>
+    <div id="four" class="volume"></div>
+    <div id="three" class="volume"></div>
+    <div id="two" class="volume"></div>
+    <div id="one" class="volume"></div>
+  </div>
+  <video id="video" class="off" autoplay></video>
+</div>
+<div id="playlists-container">
+	<% if @results %>
+		<% @results.each do |track| %>
+			<a href="/tracks/<%= track.id %>">
+				<div class="playlist-container">
+				  <img id="artwork" src="<%= track.artwork_url %>" width="90%">
+				  <h1 class="playlist-title"><%= track.artist %></h1>
+				  <h2 class="playlist-description"><%= track.title %></h2>
+				  <% if current_user %>
+				  	  <% total_votes = [] %>
+				  	  <% unless track.voters == nil %>
+					  	  <% track.voters.split(";").each{ |vote| total_votes << eval(vote) } %>
+					  <% end %>
+				  	  <% curr_users_vote = total_votes.select{ |vote| vote[0] == current_user.id }.flatten %>
+				  	  <% if curr_users_vote.empty? %>
+				  	  	<div class="vote-container">
+					  	  <a class="upvote-button" href="/tracks/<%= track.id %>/upvote"><img src="/images/upvote.png"></a>
+					  	  <h1 class="playlist-points"><%= track.points %></h1>
+					  	  <a class="downvote-button" href="/tracks/<%= track.id %>/downvote"><img src="/images/downvote.png"></a>
+					  	</div>
+					  <% elsif curr_users_vote[1] == 0 %>
+					  	<div class="vote-container">
+					  	  <a class="upvote-button" href="/tracks/<%= track.id %>/upvote"><img src="/images/upvote.png"></a>
+					  	  <h1 class="playlist-points"><%= track.points %></h1>
+					  	</div>
+					  <% elsif curr_users_vote[1] == 1 %>
+					  	<div class="vote-container">
+					  	  <h1 class="playlist-points"><%= track.points %></h1>
+					  	  <a class="downvote-button" href="/tracks/<%= track.id %>/downvote"><img src="/images/downvote.png"></a>
+					  	</div>
+					  <% end %>
+					  <div class="user-track-options">
+					  	<a class="play-track" href="<%= track.permalink_url %>"></a>
+					  	<a class="add-track" href="/addtrack/<%= track.id %>"></a>
+					  	<a class="download-track" href="<%= track.permalink_url %>" download></a>
+					  	<a class="share-track" onclick='shareForm("/tracks/<%= track.id %>/share")'></a>
+					  <% if track.user_id == current_user.id %>
+					  	<a class="delete-track" onclick='deleteTrackMessage("/tracks/<%= track.id %>/delete")'></a>
+					  <% end %>
+					  </div>
+				  <% else %>
+					  <div class="default-track-options">
+					  	<a class="play-track" href="<%= track.permalink_url %>"></a>
+					  </div> 
+				  <% end %>
+				</div>
+			</a>
+		<% end %>
+	<% end %>
+</div>
+<h1 class="footnote">Tracks</h1>
+<div id="playlist-selection-container" style='position: absolute; top: 25%; left: 30%; height: 400px; width: 600px; background: #fff; overflow-y: scroll; text-align: center; visibility: hidden; z-index: 99'>
+	<h1 style='color: #FE7B13; text-align: center'>Choose a playlist:</h1>
+	<form id="playlist-selection" name="playlist-selection" action="/add-to-playlist" method="POST">
+		<% if @playlists != nil && @playlists.length > 0 %>
+			<% @playlists.each do |playlist| %>
+				<input class="playlist-input" type="radio" name="playlist" value="<%= playlist.id%>">
+					<div class="playlist-container-selection">
+				  <% unless playlist.tracks.empty? %>
+			  		<img id="artwork" src="<%= playlist.tracks.first.artwork_url %>" width="90%">
+			  	  <% else %>
+			  		<img id="artwork" src="/images/no-image-provided.png" width="90%">
+			  	  <% end %>
+			  		<h1 class="playlist-title"><%= playlist.title %></h1>
+			  		<h2 class="playlist-description"><%= playlist.description %></h2>
+			  		<h1 class="playlist-points"><%= playlist.points %></h1>
+					</div><br>
+			<% end %>
+			<input class='sound_button-nav' type='submit' value='Submit'>
+		<% end %>
+	</form>
+</div>

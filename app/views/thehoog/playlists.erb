@@ -1,0 +1,36 @@
+<% if current_user %>
+	<form action="/upload" id="upload" name="upload"  enctype="multipart/form-data" method="POST">
+		<label for="song_title">Song Title:</label>
+		<input class="upload" type="text" name="title" placeholder="Song Title" required>
+		<label for="genre">Genre:</label>
+		<input class="upload" type="text" name="genre" placeholder="Genre" required>
+		<label for="artwork">Artwork:</label>
+		<input class="upload file-input" type="file" name="artwork" accept="image/*">
+		<label for="audio_video">Audio/Video:</label>
+		<input class="upload file-input" type="file" name="filename" accept="audio/*" required>
+		<input id="upload-submit" type="Submit" value="Submit">
+	</form>
+	<% if @error %>
+		<p class="error"><%= @error %></p>
+	<% end %>
+<% end %>
+<% i = 1 %>
+<% @playlists.each do |playlist| %>
+	<% unless playlist.user_id == nil %>
+		<% username = User.find(playlist.user_id).email.scan(/(.*)@.*/)[0][0] %>
+	<% else %>
+		<% username = "*username not provided" %>
+	<% end %>
+	<a href="/playlists/<%= playlist.id %>">
+		<div class="row">	
+			<div class="chart-position"><%= i %></div>
+			<img class="album-cover" src="<%= playlist.tracks.first.artwork_url %>">
+			<h1 class="chart-artist-name"><%= username %></h1>
+			<h2 class="chart-track-title"><%= playlist.title %></h2>
+			<div class="chart-stats"></div></div>
+		</div>
+	</a>
+	<% i += 1 %>
+<% end %>
+<a id="filter-secondary" href="/thehoog/filter/tracks"><div class="filter">Tracks</div></a>
+<a id="filter-primary" href="/thehoog/filter/playlists"><div class="filter-current">Playlists<div></a>

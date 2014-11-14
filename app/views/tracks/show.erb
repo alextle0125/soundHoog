@@ -1,0 +1,98 @@
+<div class="track-container">
+  <img id="artwork" style="margin: 0.8em" src="<%= @track.artwork_url %>" width="90%">
+  <h1 class="artist"><%= @track.artist %></h1>
+  <h2 class="song-title"><%= @track.title %></h2>
+  <h1 class="playlist-points"><%= @track.points %></h1>
+  <% if current_user %>
+    <div class="user-track-options">
+      <a class="play-track" href="<%= @track.permalink_url %>"></a>
+      <a class="add-track" href="/addtrack/<%= @track.id %>"></a>
+      <a class="download-track" href="<%= @track.permalink_url %>" download></a>
+      <a class="share-track" onclick='shareForm("/tracks/<%= @track.id %>/share")'></a>
+    <% if @track.user_id == current_user.id %>
+      <a class="delete-track" onclick='deleteTrackMessage("/tracks/<%= @track.id %>/delete")'></a>
+    <% end %>
+    </div>
+  <% else %>
+    <div class="default-track-options">
+      <a class="play-track" href="<%= @track.permalink_url %>"></a>
+    </div> 
+  <% end %>
+</div>
+
+<% if @video == true %>
+  <div id="video-player" style="position: absolute; height: 55%; top: 25%; left: 10%;">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box" style="top: 5">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+
+    <video id="video" class="off" style="width: 95%" autoplay>
+        <source src="<%= @play %>" type="video/mp4">
+        <source src="<%= @play %>" type="video/ogg">
+    </video>
+  </div>
+<% else %>
+  <div id="video-player" style="position: absolute; top: 25%; left: 10%;">
+    <p id="draggable" class="play">the<span class="play">hoog</span></p>
+    <div id="timeline">
+      <div id="playhead"></div>
+    </div>
+    <button id="play-button" class="pause"></button>
+    <button id="shuffle-button"></button>
+    <button id="playlist-button"></button>
+    <button id="fullscreen-button"></button>
+    <div id="volume-box">
+      <div id="eight" class="volume"></div>
+      <div id="seven" class="volume"></div>
+      <div id="six" class="volume"></div>
+      <div id="five" class="volume"></div>
+      <div id="four" class="volume"></div>
+      <div id="three" class="volume"></div>
+      <div id="two" class="volume"></div>
+      <div id="one" class="volume"></div>
+    </div>
+
+    <video id="video" class="off" autoplay>
+      <source src="<%= @play %>" type="audio/mp3">
+      <source src="<%= @play %>" type="audio/wav">
+    </video>
+  </div>
+<% end %>
+<% if current_user %>
+  <div id="playlist-selection-container" style='position: absolute; top: 25%; left: 30%; height: 400px; width: 600px; background: #fff; overflow-y: scroll; text-align: center; visibility: hidden; z-index: 99'>
+    <h1 style='color: #FE7B13; text-align: center'>Choose a playlist:</h1>
+    <form id="playlist-selection" name="playlist-selection" action="/add-to-playlist" method="POST">
+      <% if @playlists != nil && @playlists.length > 0 %>
+        <% @playlists.each do |playlist| %>
+          <input class="playlist-input" type="radio" name="playlist" value="<%= playlist.id%>">
+            <div class="playlist-container-selection">
+          <% unless playlist.tracks.empty? %>
+            <img id="artwork" src="<%= playlist.tracks.first.artwork_url %>" width="90%">
+            <% else %>
+              <img id="artwork" src="/images/no-image-provided.png" width="90%">
+            <% end %>
+              <h1 class="playlist-title"><%= playlist.title %></h1>
+              <h2 class="playlist-description"><%= playlist.description %></h2>
+              <h1 class="playlist-points"><%= playlist.points %></h1>
+            </div><br>
+        <% end %>
+        <input class='sound_button-nav' type='submit' value='Submit'>
+      <% end %>
+    </form>
+  </div>
+<% end %>
