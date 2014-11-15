@@ -75,16 +75,17 @@
 				  	</div>
 				  <% end %>				
 				  <div class="user-track-options">
-				  	<a class="play-track" href="/playlists/<%= playlist.id %>"></a>
+				  	<a class="play-playlist" href="/playlists/<%= playlist.id %>"></a>
 				  	<a class="add-playlist" href="/addplaylist/<%= playlist.id %>"></a>
 				  	<a class="share-track" onclick='shareForm("/playlists/<%= playlist.id %>/share")'></a>
 				  <% if playlist.user_id == current_user.id %>
 			  		<a class="delete-playlist" onclick='deletePlaylistMessage("/playlists/<%= playlist.id %>/delete")'></a>
+			  		<a class="follow" href="/users/<%= playlist.user_id %>/follow"></a>
 				  <% end %>
 				  </div>
 			  <% else %>
 				  <div class="default-track-options">
-				  	<a class="play-track" href="<%= playlist.tracks.first.permalink_url %>"></a>
+				  	<a class="play-playlist" href="<%= playlist.tracks.first.permalink_url %>"></a>
 				  </div> 
 			  <% end %>
 			</div>

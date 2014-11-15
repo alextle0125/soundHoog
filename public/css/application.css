@@ -20,7 +20,7 @@ a.downvote-button {
 
 body {
   width: 100%;
-  background: #030507;
+  background: #155D7A;
 }
 
 a {
@@ -209,24 +209,29 @@ a.play-track {
   background-image: url('../images/play-button.png')
 }
 
+a.play-playlist {
+  position: relative;
+  float: left;
+  width: 22px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/play-button.png')
+}
+
+a.follow {
+  position: relative;
+  float: right;
+  right: 5%;
+  width: 90px;
+  height: 22px;
+  color: #FE7B13;
+  background-image: url('../images/follow.png')
+}
+
 div.default-track-options {
   position: relative;
   margin: 5px 0 10px 5px;
   height: 25px;
-}
-
-a.default-play-track {
-  position: relative;
-  top: 3px;
-  color: #fff;
-  z-index: 99;
-}
-
-a.default-play-playlist {
-  position: relative;
-  top: 3px;
-  color: #fff;
-  z-index: 99;
 }
 
 div.playlist-container {
@@ -504,12 +509,12 @@ div#playlists-container {
 
 div#container {
   width: 100%;
-/*  background: #16263B;*/
-  background: -webkit-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
+  background: #155D7A;
+/*  background: -webkit-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
   background: -moz-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
   background: -o-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
   background: -ms-linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%);
-  background: linear-gradient(top, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%); 
+  background: linear-gradient(top*/, #16263B 0%, #121e2f 31%, #0b131e 55%, #070c12 83%, #030507 100%); 
 }
 
 div#soundhoog-logo {

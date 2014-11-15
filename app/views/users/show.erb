@@ -50,7 +50,7 @@
 			  <h2 class="playlist-description"><%= playlist.description %></h2>
 			  <h1 class="playlist-points"><%= playlist.points %></h1>
 	  		  <div class="user-track-options">
-			  	<a class="play-track" href="/playlists/<%= playlist.id %>"></a>
+			  	<a class="play-playlist" href="/playlists/<%= playlist.id %>"></a>
 			  	<a class="share-track" onclick='shareForm("/playlists/<%= playlist.id %>/share")'></a>
 			  	<a class="delete-playlist" onclick='removePlaylistMessage("/playlists/<%= playlist.id %>/remove")'></a>
 			  </div>

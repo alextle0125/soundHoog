@@ -69,7 +69,7 @@
 						  	</div>
 						  <% end %>
 						  <div class="user-track-options">
-						  	<a class="play-track" href="<%= track.permalink_url %>"></a>
+						  	<a class="play-playlist" href="<%= track.permalink_url %>"></a>
 						  	<a class="add-track" href="/addtrack/<%= track.id %>"></a>
 						  	<a class="download-track" href="<%= track.permalink_url %>" download></a>
 						  	<a class="share-track" onclick='shareForm("/tracks/<%= track.id %>/share")'></a>
@@ -119,7 +119,7 @@
 					  	</div>
 					  <% end %>
 					  <div class="user-track-options">
-					  	<a class="play-track" href="/playlists/<%= playlist.id %>"></a>
+					  	<a class="play-playlist" href="/playlists/<%= playlist.id %>"></a>
 					  	<a class="add-track" href="/addplaylist/<%= playlist.id %>"></a>
 					  	<a class="share-track" onclick='shareForm("/playlists/<%= playlist.id %>/share")'></a></a>
 					  	<a class="delete-track" onclick='inboxDeletePlaylist("/users/<%= current_user.id %>/inbox/playlists/<%= playlist.id %>/delete")'></a>
